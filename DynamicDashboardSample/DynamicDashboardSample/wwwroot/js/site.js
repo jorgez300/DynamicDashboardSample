@@ -156,14 +156,7 @@ const InitStages = (item) => {
         IntObject: null
     }
 
-    StageProps.DomElement = document.createElement('div');
-    StageProps.DomElement.id = 'Stage' + item.stage.stageId;
-    StageProps.DomElement.className = 'grid-snap';
-    StageProps.DomElement.innerHTML = item.stage.name;
-    StageProps.DomElement.style.backgroundColor = item.color;
-    StageProps.DomElement.style.width = item.sizeW + 'px';
-    StageProps.DomElement.style.height = item.sizeH + 'px';
-    StageProps.DomElement.style.transform = 'translate(' + item.posX + 'px, ' + item.posY + 'px)'
+    StageProps.DomElement = DomStage(item);
 
     document.getElementById('VysorContainer').appendChild(StageProps.DomElement);
 
@@ -257,3 +250,18 @@ const decimalAdjust = (type, value, exp) => {
 }
 
 
+const DomStage = (item) => {
+
+    let DomElement = document.createElement('div');
+    DomElement.id = 'Stage' + item.stage.stageId;
+    DomElement.className = 'StageContainer';
+    DomElement.style.backgroundColor = item.color;
+    DomElement.style.width = item.sizeW + 'px';
+    DomElement.style.height = item.sizeH + 'px';
+    DomElement.style.transform = 'translate(' + item.posX + 'px, ' + item.posY + 'px)'
+
+    DomElement.innerHTML = item.stage.name;
+
+    return DomElement
+
+}
